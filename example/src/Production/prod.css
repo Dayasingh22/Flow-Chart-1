@@ -1,0 +1,67 @@
+.grid {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-auto-flow: row dense;
+}
+
+.item {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.25em;
+  height: 95vh;
+}
+
+.large {
+  background: rgba(255, 0, 0, 0.25);
+  grid-column: auto / span 2;
+  grid-row: auto / span 11;
+}
+
+.rect {
+  border-bottom: 2px solid rgb(4, 122, 122);
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.item-1 {
+  padding: 20px;
+  padding-bottom: 10px;
+}
+
+button {
+  background: #99f;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+label {
+  font-size: 16px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 8px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.Add .rect {
+  margin-top: 10px;
+  border-bottom: 2px solid rgb(3, 145, 114);
+  padding-bottom: 20px;
+}
+
+.Add .rect h4 {
+  text-align: center;
+}
+
+.updatenode__cont label {
+  display: block;
+}
+
+.updatenode__bglabel {
+  margin-top: 10px;
+}

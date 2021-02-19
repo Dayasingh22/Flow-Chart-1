@@ -4,7 +4,7 @@ import ReactFlow, { addEdge, Background, Controls, MiniMap, removeElements } fro
 import './prod.css';
 
 import ColorSelectorNode from '../CustomNode/ColorSelectorNode';
-import CustomNode from '../CustomNode/CustomNode';
+//import CustomNode from '../CustomNode/CustomNode';
 
 const data = 'Hello';
 const imageUrl = 'https://source.unsplash.com/random';
@@ -12,7 +12,6 @@ const text = 'ejdkdjkcbsjckdbjksjkcdnjksndc';
 
 const nodeTypes = {
   selectorNode: ColorSelectorNode,
-  customNode: CustomNode,
 };
 
 const onLoad = (reactFlowInstance) => {
@@ -59,8 +58,8 @@ const Test = () => {
     setElements((e) =>
       e.concat({
         id: (e.length + 1).toString(),
-        type: 'customNode',
-        data: { data: `${name}`, source: `${imageUrl}`, textarea: `${text}` },
+        type: 'selectorNode',
+        data: { data: `${name}`, source: `${imageUrl}` },
         animated: true,
         position: {
           x: Math.random() * 100,
@@ -71,8 +70,8 @@ const Test = () => {
           textAlign: 'center',
           color: '#333',
           wordWrap: 'break-word',
-          width: '400px',
-          height: '200px',
+          width: '200px',
+          height: '100px',
           border: '1px solid #222138',
           padding: 10,
         },

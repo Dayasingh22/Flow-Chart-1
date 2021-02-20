@@ -14,6 +14,17 @@ const nodeTypes = {
   selectorNode: ColorSelectorNode,
 };
 
+const initialElements = [
+  {
+    id: '1',
+    type: 'selectorNode',
+    data: { data: data, source: imageUrl },
+    style: { border: '1px solid #fff', padding: 10, background: '#D6D5E6' },
+    animated: true,
+    position: { x: 20, y: 20 },
+  },
+];
+
 const onLoad = (reactFlowInstance) => {
   reactFlowInstance.fitView();
 };
@@ -21,8 +32,8 @@ const onLoad = (reactFlowInstance) => {
 const Test = () => {
   const localData = localStorage.getItem('elements');
   const localElements = JSON.parse(localData);
-  console.log(localElements);
-  const [elements, setElements] = useState(localElements);
+  const elem = localElements == null ? initialElements : localElements;
+  const [elements, setElements] = useState(elem);
   const [name, setName] = useState('');
 
   useEffect(() => {

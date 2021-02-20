@@ -203,6 +203,17 @@ const Test = () => {
     );
   }, [nodeImage, setElements]);
 
+  const onImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        setNodeImage(e.target.result);
+        console.log(e.target.result);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  };
+
   return (
     <Fragment>
       <div className="grid">
@@ -274,7 +285,8 @@ const Test = () => {
           <input
             style={{ width: '150px' }}
             type="file"
-            onChange={(evt) => setNodeImage(URL.createObjectURL(evt.target.files[0]))}
+            // onChange={(evt) => setNodeImage(URL.createObjectURL(evt.target.files[0]))}
+            onChange={onImageChange}
           />
           <img src={nodeImage} width="200" height="150" />
           <div className="checkboxwrapper">

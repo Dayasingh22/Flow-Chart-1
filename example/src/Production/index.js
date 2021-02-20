@@ -8,7 +8,6 @@ import ColorSelectorNode from '../CustomNode/ColorSelectorNode';
 
 const data = 'Hello';
 const imageUrl = 'https://source.unsplash.com/random';
-const text = 'ejdkdjkcbsjckdbjksjkcdnjksndc';
 
 const nodeTypes = {
   selectorNode: ColorSelectorNode,
@@ -19,7 +18,7 @@ const initialElements = [
     id: '1',
     type: 'selectorNode',
     data: { data: data, source: imageUrl },
-    style: { border: '1px solid #fff', padding: 10, background: '#D6D5E6' },
+    style: { border: '1px solid #fff', padding: 10, background: '#D6D5E6', width: '300px', height: '150px' },
     animated: true,
     position: { x: 20, y: 20 },
   },
@@ -81,8 +80,8 @@ const Test = () => {
           textAlign: 'center',
           color: '#333',
           wordWrap: 'break-word',
-          width: '200px',
-          height: '100px',
+          width: '300px',
+          height: '150px',
           border: '1px solid #222138',
           padding: 10,
         },
@@ -119,10 +118,11 @@ const Test = () => {
   const onElementsRemove = (elementsToRemove) => setElements((els) => removeElements(elementsToRemove, els));
   const [nodeName, setNodeName] = useState('');
   const [nodeBg, setNodeBg] = useState('');
-  const [nodeImage, setNodeImage] = useState('');
+  const [nodeImage, setNodeImage] = useState(imageUrl);
   const [nodeX, setNodeX] = useState('');
   const [nodeY, setNodeY] = useState('');
   const [element, setElement] = useState({});
+  const [nodeHidden, setNodeHidden] = useState(false);
   const onElementClick = (event, element) => {
     setElement(element);
     console.log(element);
@@ -157,6 +157,36 @@ const Test = () => {
       })
     );
   }, [nodeBg, setElements]);
+
+  useEffect(() => {
+    setElements((els) =>
+      els.map((el) => {
+        if (el.id === element.id) {
+          el.position = {
+            ...el.position,
+            x: nodeX,
+          };
+        }
+
+        return el;
+      })
+    );
+  }, [nodeX, setElements]);
+
+  useEffect(() => {
+    setElements((els) =>
+      els.map((el) => {
+        if (el.id === element.id) {
+          el.position = {
+            ...el.position,
+            y: nodeY,
+          };
+        }
+
+        return el;
+      })
+    );
+  }, [nodeY, setElements]);
 
   useEffect(() => {
     setElements((els) =>
@@ -213,13 +243,17 @@ const Test = () => {
             snapGrid={[16, 16]}
           >
             <Background color="#fff" gap={12} />
-            <MiniMap
-              nodeColor={(n) => {
-                if (n.type === 'input') return 'blue';
+            {nodeHidden ? (
+              ''
+            ) : (
+              <MiniMap
+                nodeColor={(n) => {
+                  if (n.type === 'input') return 'blue';
 
-                return '#FFCC00';
-              }}
-            />
+                  return '#FFCC00';
+                }}
+              />
+            )}
             <Controls />
           </ReactFlow>
         </div>
@@ -242,7 +276,11 @@ const Test = () => {
             type="file"
             onChange={(evt) => setNodeImage(URL.createObjectURL(evt.target.files[0]))}
           />
-          <img src={nodeImage} width="200" />
+          <img src={nodeImage} width="200" height="150" />
+          <div className="checkboxwrapper">
+            <label>Hide MiniMap:</label>
+            <input type="checkbox" checked={nodeHidden} onChange={(evt) => setNodeHidden(evt.target.checked)} />
+          </div>
         </div>
       </div>
     </Fragment>

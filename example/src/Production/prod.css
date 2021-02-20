@@ -65,3 +65,13 @@ input {
 .updatenode__bglabel {
   margin-top: 10px;
 }
+
+.checkboxwrapper {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.checkboxwrapper input {
+  margin-top: -7px;
+}

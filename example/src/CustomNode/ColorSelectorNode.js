@@ -12,7 +12,7 @@ export default memo(({ data }) => {
         onConnect={(params) => console.log('handle onConnect', params)}
       />
       <div>
-        <strong style={{ fontSize: '22px' }}>{data.data}</strong> <br />
+        <strong style={{ fontSize: '22px' }}>{data.label}</strong> <br />
         <img src={data.source} style={{ width: 80, height: 80, borderRadius: '50%' }} />
       </div>
       <Handle type="source" position="bottom" style={{ background: '#555' }} />

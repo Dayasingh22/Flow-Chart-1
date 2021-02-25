@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+export default ({ data }) => {
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData('application/reactflow', nodeType);
     event.dataTransfer.effectAllowed = 'move';
@@ -17,6 +17,10 @@ export default () => {
       </div>
       <div className="dndnode output" onDragStart={(event) => onDragStart(event, 'output')} draggable>
         Output Node
+      </div>
+      <div className="image" onDragStart={(event) => onDragStart(event, 'selectorNode')} draggable>
+        <p>Image Node</p>
+        <img src="https://source.unsplash.com/random" alt="jcj" />
       </div>
     </aside>
   );

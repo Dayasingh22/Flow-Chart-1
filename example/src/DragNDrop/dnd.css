@@ -40,6 +40,18 @@
   height: 100%;
 }
 
+.image {
+  border: 1px solid#0779a7;
+  height: 100px;
+  flex-direction: row;
+  text-align: center;
+}
+
+.image img {
+  width: 50px;
+  height: 50px;
+}
+
 @media screen and (min-width: 768px) {
   .dndflow {
     flex-direction: row;
